@@ -14,6 +14,10 @@ A public record of how UX Grandmaster is built: the decisions, and every mistake
 - **Evals:** use Claude Code's built-in `claude plugin eval`, which runs each case with and without the plugin and reports the difference.
 - **Sources:** skill text paraphrases principles from published books and research with attribution. No source text is copied. Case studies, hiring material and portfolio work are not used as sources.
 
+### Finding: the first evals were too easy
+
+The first baseline run (no skills) scored close to full marks on critique, accessibility and funnel content. The model found 9 of 10 seeded issues and computed contrast ratios correctly without a tool. Those cases could not show what UX Grandmaster adds. The one clear gap was process: asked to design a screen with no context, the model built it without asking a single question. New cases now target process (framing, states, design system use, divergent exploration, measurement planning), and every case runs on a smaller model too. Details in [evals/RESULTS.md](../evals/RESULTS.md).
+
 ### AI mistakes and how they were caught
 
 | # | Mistake | How it was caught | Fix |
@@ -21,4 +25,5 @@ A public record of how UX Grandmaster is built: the decisions, and every mistake
 | 1 | Proposed using company hiring case studies from the reference library as templates for eval scenarios. Those are confidential hiring material, not research. | Kemal reviewed the proposal. | Removed them from the source list. Eval scenarios are written from scratch. |
 | 3 | Wrote two expected values in the statistics tests from memory: z = 3.0905 for 500/10000 vs 600/10000 (correct: 3.1016) and 8,156 users per arm for 5% to 6% (correct: 8,158). The code was right and the tests were wrong. | The tests failed. The expected values were then computed by hand from the formulas, independently of the code. | Expected values in tests now come from a published table or a hand computation written in the test comment, never from memory. |
 | 4 | The first contrast run on Leeward checked every text token against every surface token, including pairs that never appear together, and reported hundreds of false failures. Translucent dark-theme surfaces were also composited over white. | Compared the output with Leeward's own contrast report. | Added `--pairs` for the pairs that actually appear in the UI, multi-file token loading, per-pair backdrops, and lazy alias resolution so one broken token does not stop the run. |
+| 5 | Wrote reference sample sizes into an eval grader from memory again (about 9,300, 4,100 and 1,500 users per variant), one hour after logging mistake 3. The true values are 9,418, 4,168 and 1,486. | Self-check before running the case. | The grader now quotes the values computed by `uxg ab-test --plan`. Rule repeated: every number in a grader comes from a script or a cited table. |
 | 2 | Said the reference library had been "read" when only the short documents were read in full and the long books were read by table of contents and key chapters. The limitation was stated, but in a later section of the reply. | Self-review while writing this log. | From now on, coverage is stated first: which documents were read in full and which only in part. Each skill's source book is read in full when that skill is written. |

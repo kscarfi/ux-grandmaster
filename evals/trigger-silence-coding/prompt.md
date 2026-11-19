@@ -1,5 +1,5 @@
 ---
-description: An unrelated coding task. UX Grandmaster must stay out of the way.
+description: "An unrelated coding task. UX Grandmaster must stay out of the way."
 tags: [core, trigger]
 max_turns: 10
 allowed_tools: [Read, Glob, Grep, Skill, TodoWrite]

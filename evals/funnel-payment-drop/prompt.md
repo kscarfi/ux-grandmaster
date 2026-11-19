@@ -1,5 +1,5 @@
 ---
-description: Diagnose a checkout drop-off from raw events. Known truth is built into the generated data.
+description: "Diagnose a checkout drop-off from raw events. Known truth is built into the generated data."
 tags: [core, analytics]
 max_turns: 30
 timeout_seconds: 900

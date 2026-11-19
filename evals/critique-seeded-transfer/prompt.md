@@ -1,5 +1,5 @@
 ---
-description: Review a transfer screen with seeded problems. Scored by how many seeded problems the review finds.
+description: "Review a transfer screen with seeded problems. Scored by how many seeded problems the review finds."
 tags: [core, critique]
 max_turns: 30
 timeout_seconds: 900

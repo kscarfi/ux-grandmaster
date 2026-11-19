@@ -13,13 +13,22 @@ The suite uses the `claude plugin eval` format from Claude Code: one folder per 
 | `a11y-audit-transfer` | A WCAG 2.2 AA audit of the same screen: measured contrast ratios, issues automated tools miss, an honest verdict and an honest scope. |
 | `funnel-payment-drop` | A drop-off question on raw event data with a known answer built in: one device segment fails at the payment step, and a tracking change hides some events. |
 | `trigger-silence-coding` | An unrelated coding task. UX Grandmaster must not fire. |
+| `framing-gate-onboarding`, `framing-gate-dashboard` | Two more vague requests that must start with framing. |
+| `quick-fix-button-label` | A one-line copy fix. It must be done directly, with no research process. |
+| `states-transaction-list` | A well-framed screen. It must cover loading, empty and error states, and must not stop for an interview. |
+| `leeward-confirm-screen` | A screen built inside the Leeward design system: semantic tokens only, no raw colors, and Leeward's money rules. |
+| `diverge-savings-directions` | An open product question: 2 to 4 genuinely different directions with honest downsides, and the user picks. |
+| `measure-payment-redesign` | A measurement plan: primary and guardrail metrics, a correct sample size, and experiment hygiene. |
 
 ## Fixtures
 
 - `fixtures/transfer-screen/index.html`: a transfer screen written for these evals, with seeded problems. The answer key lives only in the graders.
 - `fixtures/checkout-funnel/generate.mjs`: writes `checkout-events.csv` from a fixed seed. The known truth is described at the top of the script.
 
-Fixtures are original. No case study, client work or copyrighted material is used.
+- `fixtures/leeward/`: a snapshot of the MIT-licensed [Leeward Design System](https://github.com/kscarfi/leeward-design-system) docs and light theme tokens.
+- `fixtures/quick-fix/form.html`: a one-field form.
+
+Fixtures are original or MIT-licensed. No case study, client work or copyrighted book material is used.
 
 ## Run
 
