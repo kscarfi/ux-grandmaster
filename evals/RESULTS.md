@@ -76,3 +76,18 @@ Rerunning two cases with `--keep-temp` showed why two process graders failed:
 1. **Critique:** the skill loaded, but the model chose the "no subagents" fallback although the `design-critic` agent was available. In this Claude Code version the subagent tool is called `Task`, while the grader looked for `Agent`. Fixes: the skill now says to use a subagent whenever one exists and names the tool; the grader checks for the subagent type in the trace instead of a tool name.
 2. **Funnel:** the skill loaded, then the model ran `which uxg`, did not find it, and wrote its own Python script. Fix: every skill that uses `uxg` now gives the exact command, `node "${CLAUDE_PLUGIN_ROOT}/scripts/uxg.mjs"`, and the relative fallback path.
 3. **Leeward:** the "no primitive tokens" grader matched `--lw-space-2xs` and `--lw-space-3xl`, which are valid semantic tokens in Leeward. Both the baseline and the plugin run may have been marked down wrongly. The pattern now matches only numeric primitives such as `--lw-space-4` and palette steps such as `--lw-color-indigo-600`.
+
+## 2026-11-20: developer cases, with and without the plugin
+
+- **Plugin state:** working tree after commit `e225edc` minus the icon, with the `uxg` path fix, the critique subagent fix and the corrected Leeward grader.
+- **Command:** `claude plugin eval . --runs 1 --ablation with-without --scaffold --allow-tools Write Edit Bash "WebFetch(domain:developer.apple.com)" --case <case>`. Graders that only make sense with the plugin are excluded from both scores.
+- **Model:** Claude Opus 5.5 (Claude Code default). One run per arm.
+
+| Case | With | Without | Δ | Notes |
+|---|---|---|---|---|
+| `dev-review-vibe-app` | 1.00 | 1.00 | 0.00 | Both found the seeded problems with file and line. |
+| `dev-review-visionos` | 1.00 | 0.80 | +0.20 | Without the plugin, the review did not cite Apple's guidelines. |
+| `leeward-confirm-screen` | 1.00 | 1.00 | 0.00 | With the corrected grader, both followed Leeward's token and money rules. |
+| `trigger-silence-backend` | 1.00 | 1.00 | 0.00 | No UX Grandmaster skill fired on a database migration. |
+
+With the strongest model, the plugin's measurable effect is on process (framing, states, citing platform guidance, using measurement tools), not on spotting problems the model already sees. The next run uses a smaller model.

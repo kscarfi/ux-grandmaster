@@ -87,7 +87,7 @@ for (const f of readdirSync(join(ROOT, "agents"))) {
   checkProse(text, file);
 }
 
-for (const f of ["docs/build-log.md", "docs/platforms.md", "docs/roadmap.md", "docs/library.md", "CONTRIBUTING.md", "SECURITY.md"]) {
+for (const f of ["README.md", "evals/README.md", "evals/RESULTS.md", "docs/build-log.md", "docs/platforms.md", "docs/roadmap.md", "docs/library.md", "CONTRIBUTING.md", "SECURITY.md"]) {
   if (existsSync(join(ROOT, f))) checkProse(readFileSync(join(ROOT, f), "utf8"), f);
 }
 
