@@ -1,0 +1,21 @@
+{
+  "name": "ux-grandmaster",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A design methodology plugin for AI agents: frame, research, design, critique, verify.",
+  "license": "MIT",
+  "author": "Kemal Salih Carfi",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "uxg": "scripts/uxg.mjs"
+  },
+  "scripts": {
+    "test": "node --test \"scripts/test/*.test.mjs\""
+  },
+  "devDependencies": {
+    "colorjs.io": "0.7.1"
+  }
+}
