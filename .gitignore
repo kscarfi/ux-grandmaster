@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Eval run output (summaries go to evals/RESULTS.md)
+evals/results/
+evals/**/results/
+
+# Screenshots and reports written by scripts during local runs
+.ux-grandmaster/
+playwright-report/
+test-results/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local environment
+.env
+.env.*
+!.env.example
