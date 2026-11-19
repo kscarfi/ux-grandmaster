@@ -9,6 +9,9 @@ const COMMANDS = {
   "ab-test": "Read an A/B test (with sample ratio check) or plan its sample size",
   sources: "Log research sources and check dates, staleness and triangulation",
   decision: "Append a design decision with its evidence to design/decisions.md",
+  screenshot: "Render a page at several widths to PNG (needs `uxg setup`)",
+  axe: "Run axe-core WCAG 2.2 A and AA checks on a page (needs `uxg setup`)",
+  setup: "Install the optional browser runtime for screenshot and axe",
 };
 
 const [, , name, ...rest] = process.argv;

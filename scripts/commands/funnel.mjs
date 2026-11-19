@@ -18,6 +18,8 @@ Options:
   --event <column>     Event name column. Default: event.
   --time <column>      Timestamp column. When set, steps must happen in order.
   --segment <column>   Break the funnel down by this column (device, country, ...).
+  --focus <step>       Step to show segment intervals for. Default: the step
+                       with the lowest step conversion.
   --json               Print JSON.
 
 Segments with fewer than ${MIN_SEGMENT_USERS} users entering a step are flagged.
@@ -35,6 +37,7 @@ export function run(argv) {
       event: { type: "string", default: "event" },
       time: { type: "string" },
       segment: { type: "string" },
+      focus: { type: "string" },
       json: { type: "boolean", default: false },
       help: { type: "boolean", short: "h", default: false },
     },
@@ -111,8 +114,14 @@ export function run(argv) {
   if (all[0].users === 0) {
     return { output: `No user reached the first step "${steps[0]}". Check --steps and --event.`, code: 1 };
   }
-  // The step with the biggest absolute loss of users.
+  // The step with the biggest absolute loss, and the one with the lowest rate.
   const worst = all.slice(1).reduce((a, b) => (b.dropOff > a.dropOff ? b : a));
+  const lowest = all.slice(1).reduce((a, b) => (b.stepConversion < a.stepConversion ? b : a));
+  let focus = lowest;
+  if (values.focus) {
+    if (!steps.slice(1).includes(values.focus)) throw usage(`--focus must be one of: ${steps.slice(1).join(", ")}.`);
+    focus = all[steps.indexOf(values.focus)];
+  }
 
   let segments = null;
   if (values.segment) {
@@ -131,6 +140,8 @@ export function run(argv) {
     users: users.size,
     steps: all,
     biggestDrop: { step: worst.step, lost: worst.dropOff, conversion: worst.stepConversion },
+    lowestConversion: { step: lowest.step, conversion: lowest.stepConversion },
+    focus: focus.step,
     segments,
     warnings: [
       ...(segmentConflicts.size
@@ -150,16 +161,36 @@ export function run(argv) {
         `${s.interval ? `${pct(s.interval.low)} to ${pct(s.interval.high)}` : ""} | ${s.dropOff || ""} |`,
     ),
     ``,
-    `Biggest drop: into "${worst.step}", ${worst.dropOff} users lost (${pct(worst.stepConversion)} step conversion).`,
+    `Most users lost: into "${worst.step}", ${worst.dropOff} users (${pct(worst.stepConversion)} step conversion).`,
+    `Lowest step conversion: into "${lowest.step}" (${pct(lowest.stepConversion)}).`,
   ];
   if (segments) {
-    const idx = steps.indexOf(worst.step);
-    lines.push(``, `By ${values.segment}, conversion into "${worst.step}":`, ``, `| ${values.segment} | Entered | Converted | Rate | 95% interval | Note |`, `|---|---|---|---|---|---|`);
+    lines.push(
+      ``,
+      `Step conversion by ${values.segment}:`,
+      ``,
+      `| ${values.segment} | Users | ${steps.slice(1).join(" | ")} |`,
+      `|---|---|${steps.slice(1).map(() => "---").join("|")}|`,
+      ...segments.map(
+        (seg) =>
+          `| ${seg.name} | ${seg.steps[0].users} | ` +
+          seg.steps
+            .slice(1)
+            .map((s) => `${pct(s.stepConversion)}${s.small ? "*" : ""}`)
+            .join(" | ") +
+          " |",
+      ),
+    );
+    if (segments.some((seg) => seg.steps.some((s) => s.small))) {
+      lines.push(`* fewer than ${MIN_SEGMENT_USERS} users entered this step: too small to read.`);
+    }
+    const idx = steps.indexOf(focus.step);
+    lines.push(``, `Into "${focus.step}" by ${values.segment}, with 95% intervals:`, ``, `| ${values.segment} | Entered | Converted | Rate | 95% interval |`, `|---|---|---|---|---|`);
     for (const seg of segments) {
       const s = seg.steps[idx];
       lines.push(
         `| ${seg.name} | ${s.entered} | ${s.users} | ${pct(s.stepConversion)} | ` +
-          `${pct(s.interval.low)} to ${pct(s.interval.high)} | ${s.small ? `fewer than ${MIN_SEGMENT_USERS} users` : ""} |`,
+          `${pct(s.interval.low)} to ${pct(s.interval.high)} |`,
       );
     }
   }
