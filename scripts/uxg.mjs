@@ -3,6 +3,7 @@
 
 const COMMANDS = {
   contrast: "WCAG 2.2 and APCA contrast for color pairs or a token file",
+  library: "Index and search your own design library, with page citations",
 };
 
 const [, , name, ...rest] = process.argv;
