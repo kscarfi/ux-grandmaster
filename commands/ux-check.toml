@@ -1,0 +1,4 @@
+description = "Find UX and accessibility problems in this code, with file and line"
+prompt = """
+Use the "ux-check" skill from UX Grandmaster on this request: {{args}}
+"""

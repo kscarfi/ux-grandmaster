@@ -11,6 +11,8 @@ metadata:
 
 Code is a design surface. Build it so it looks right, works for everyone and survives real content.
 
+> **Running `uxg`:** `node "${CLAUDE_PLUGIN_ROOT}/scripts/uxg.mjs" <command>`. If `${CLAUDE_PLUGIN_ROOT}` is not filled in on your platform, the script is `../../scripts/uxg.mjs` from this skill's folder. It is not on the PATH. Below, `uxg <command>` is short for this.
+
 ## 1. Before writing code
 
 - Follow `designing-with-design-systems`: use the project's components and tokens.

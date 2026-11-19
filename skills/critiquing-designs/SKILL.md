@@ -11,6 +11,8 @@ metadata:
 
 A designer cannot see their own blind spots. The critique comes from fresh eyes, is ranked by severity, and every issue comes with a principle and a fix.
 
+> **Running `uxg`:** `node "${CLAUDE_PLUGIN_ROOT}/scripts/uxg.mjs" <command>`. If `${CLAUDE_PLUGIN_ROOT}` is not filled in on your platform, the script is `../../scripts/uxg.mjs` from this skill's folder. It is not on the PATH. Below, `uxg <command>` is short for this.
+
 ## 1. Gather what the reviewer needs, and nothing else
 
 - **The design, as the user would see it.** Rendered screenshots at mobile and desktop widths (`uxg screenshot <file-or-url>`), Figma screenshots, or the files themselves. Prefer images over code: users see pixels.
@@ -23,6 +25,8 @@ Do **not** pass your own reasoning, your design rationale or what you think is g
 ## 2. Dispatch the reviewer
 
 Start the `design-critic` subagent with the material above and this task: "Critique this design against the brief. Return the severity-ranked table described in your instructions."
+
+Check your tools for a way to start a subagent (in Claude Code it is the Agent or Task tool, with subagent type `ux-grandmaster:design-critic`). If one exists, use it. The fallback below is only for platforms with no subagents; choosing it when a subagent is available defeats the point of the critique.
 
 If the reviewer reads code, also ask it to check the states it cannot see in screenshots (loading, empty, error, long content).
 

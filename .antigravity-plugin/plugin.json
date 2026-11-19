@@ -2,6 +2,7 @@
   "$schema": "https://antigravity.google/schemas/v1/plugin.json",
   "name": "ux-grandmaster",
   "displayName": "UX Grandmaster",
+  "logo": "assets/icon.svg",
   "description": "A design methodology for AI agents: frame the problem, research, design with your system, get an independent critique, prove accessibility, then hand off.",
   "version": "0.0.0",
   "author": {

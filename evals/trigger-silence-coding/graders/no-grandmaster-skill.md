@@ -1,7 +1,7 @@
 ---
 type: tool_used
 tool: Skill
-input_match: 'ux-grandmaster|framing-design|critiquing-designs|auditing-accessibility|using-ux-grandmaster'
+input_match: 'ux-grandmaster|framing-design|critiquing-designs|auditing-accessibility|using-ux-grandmaster|reviewing-ux-in-code|improving-ui|following-platform'
 min: 0
 max: 0
 arm: both

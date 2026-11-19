@@ -11,6 +11,8 @@ metadata:
 
 A design system is worth it when using an existing pattern a second time costs far less than designing it the first time. Build for that: easy to use correctly, hard to use wrongly, and kept up to date by checks, not goodwill.
 
+> **Running `uxg`:** `node "${CLAUDE_PLUGIN_ROOT}/scripts/uxg.mjs" <command>`. If `${CLAUDE_PLUGIN_ROOT}` is not filled in on your platform, the script is `../../scripts/uxg.mjs` from this skill's folder. It is not on the PATH. Below, `uxg <command>` is short for this.
+
 ## 1. Audit first
 
 Collect what exists: every color, font size, spacing value, radius, shadow and component variant in use. Count duplicates and near-duplicates. This shows the design debt and is the argument for the work.

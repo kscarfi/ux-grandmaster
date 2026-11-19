@@ -11,9 +11,13 @@ metadata:
 
 WCAG 2.2 AA is the floor, not the goal. Every pass and fail in the audit is backed by a measurement or an observation someone can repeat.
 
+> **Running `uxg`:** `node "${CLAUDE_PLUGIN_ROOT}/scripts/uxg.mjs" <command>`. If `${CLAUDE_PLUGIN_ROOT}` is not filled in on your platform, the script is `../../scripts/uxg.mjs` from this skill's folder. It is not on the PATH. Below, `uxg <command>` is short for this.
+
 ## 1. Dispatch the auditor
 
 Start the `accessibility-auditor` subagent with: the files or URL, the brief (who uses it, on which devices), the design system tokens if any, and this task: "Audit against WCAG 2.2 AA. Return pass, fail or not tested per criterion, with evidence."
+
+In Claude Code, use the Agent or Task tool with subagent type `ux-grandmaster:accessibility-auditor`. Use the fallback only when no subagent tool exists.
 
 **No subagents?** Run the steps below yourself, and say at the top of the report that the designer audited their own work.
 

@@ -8,9 +8,9 @@
 
 const NOTE = `UX Grandmaster is installed. It is a design methodology: frame the problem, research, explore directions, design inside the team's design system, get an independent critique, prove accessibility, verify, hand off and measure.
 
-For any task that designs, reviews, researches or measures a user-facing product, screen, flow, component or UX copy, the skill "using-ux-grandmaster" describes how to size the task (quick fix, single screen, full project) and which skill to use. Unrelated tasks do not need it.
+For any task that designs, reviews, builds, researches or measures a user-facing product, screen, flow, component or UX copy, including a developer checking their own app, the skill "using-ux-grandmaster" describes how to size the task (quick fix, single screen, full project) and which skill to use. Unrelated tasks do not need it.
 
-Short commands: brief, research, critique, a11y, handoff.`;
+Short commands: brief, research, critique, a11y, handoff, ux-check (a fast UX check of the code, for developers).`;
 
 const arg = process.argv.indexOf("--format");
 const format = arg !== -1 ? process.argv[arg + 1] : "claude";

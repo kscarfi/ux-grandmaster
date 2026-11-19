@@ -1,6 +1,6 @@
 ---
-type: tool_used
-tool: Agent
-input_match: 'design-critic'
+type: regex
+target: trace
+pattern: 'subagent_type.{0,12}(ux-grandmaster:)?design-critic'
 arm: with-only
 ---

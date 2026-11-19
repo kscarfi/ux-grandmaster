@@ -20,6 +20,7 @@
     "critique",
     "wcag"
   ],
+  "hooks": "./.claude-plugin/hooks.json",
   "userConfig": {
     "library_path": {
       "type": "directory",

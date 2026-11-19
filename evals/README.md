@@ -18,6 +18,9 @@ The suite uses the `claude plugin eval` format from Claude Code: one folder per 
 | `states-transaction-list` | A well-framed screen. It must cover loading, empty and error states, and must not stop for an interview. |
 | `leeward-confirm-screen` | A screen built inside the Leeward design system: semantic tokens only, no raw colors, and Leeward's money rules. |
 | `diverge-savings-directions` | An open product question: 2 to 4 genuinely different directions with honest downsides, and the user picks. |
+| `dev-review-vibe-app` | A solo developer asks for a UX check of an AI-built React app with seeded problems. Scored on located findings (file and line) and priorities. |
+| `dev-review-visionos` | A visionOS SwiftUI view. Scored on applying Apple's visionOS guidance (60 pt hit regions, Dynamic Type, labels, look-and-pinch) rather than generic advice. |
+| `trigger-silence-backend` | A database migration. UX Grandmaster must not fire, even though developers are now a target audience. |
 | `measure-payment-redesign` | A measurement plan: primary and guardrail metrics, a correct sample size, and experiment hygiene. |
 
 ## Fixtures
@@ -27,6 +30,8 @@ The suite uses the `claude plugin eval` format from Claude Code: one folder per 
 
 - `fixtures/leeward/`: a snapshot of the MIT-licensed [Leeward Design System](https://github.com/kscarfi/leeward-design-system) docs and light theme tokens.
 - `fixtures/quick-fix/form.html`: a one-field form.
+- `fixtures/vibe-app/`: a small React app with typical AI-generated UX problems.
+- `fixtures/vision-app/`: a visionOS SwiftUI view with platform problems.
 
 Fixtures are original or MIT-licensed. No case study, client work or copyrighted book material is used.
 

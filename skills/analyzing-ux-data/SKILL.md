@@ -11,6 +11,8 @@ metadata:
 
 Numbers are computed, not estimated, and every conclusion says how sure it is.
 
+> **Running `uxg`:** `node "${CLAUDE_PLUGIN_ROOT}/scripts/uxg.mjs" <command>`. If `${CLAUDE_PLUGIN_ROOT}` is not filled in on your platform, the script is `../../scripts/uxg.mjs` from this skill's folder. It is not on the PATH. Below, `uxg <command>` is short for this.
+
 ## 1. Understand the data first
 
 Look at the file before analyzing: columns, row count, date range, one row per what (event, user, session), missing values, duplicates. Write this down in two or three lines. Ask what each column means if it is not clear.

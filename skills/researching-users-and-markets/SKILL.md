@@ -11,6 +11,8 @@ metadata:
 
 Research is only as good as its sources. Every claim has a source, a date and a confidence level.
 
+> **Running `uxg`:** `node "${CLAUDE_PLUGIN_ROOT}/scripts/uxg.mjs" <command>`. If `${CLAUDE_PLUGIN_ROOT}` is not filled in on your platform, the script is `../../scripts/uxg.mjs` from this skill's folder. It is not on the PATH. Below, `uxg <command>` is short for this.
+
 ## 1. Start from the question
 
 Write the research question and what decision it informs: "How do neobanks let people freeze a card, so we can decide where the control lives." Agree on it with the user if it is not obvious.

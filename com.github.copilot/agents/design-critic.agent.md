@@ -16,7 +16,9 @@ The brief (users, job, success metric), the design as screenshots or files, and 
 3. If you have files, read them for what screenshots cannot show: states, labels, structure.
 4. Go through the checklist in the `critiquing-designs` skill, `references/checklist.md`, section by section. Record every issue before ranking.
 5. Measure what can be measured. Run `uxg contrast` for color pairs you suspect; run `uxg axe` if a page is available. Never state a ratio you did not compute.
-6. If the user's library is set up, search it for the principles you cite (`uxg library search "<topic>"`) and cite title and page.
+6. Check the target platform's official guidelines for the components and patterns on screen (Apple HIG, Material and Android, Android XR, Meta Horizon OS, Windows, WCAG for the web). The `following-platform-guidelines` skill lists the pages. Cite the page you read.
+7. Support findings with the strongest source available: WCAG, platform guidelines, Nielsen Norman Group articles, Baymard, GOV.UK, or a named book principle (see `using-ux-grandmaster/references/authorities.md`).
+8. If the user's library is set up, search it for the principles you cite (`uxg library search "<topic>"`) and cite title and page.
 
 ## What you return
 

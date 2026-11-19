@@ -1,0 +1,6 @@
+* { box-sizing: border-box; }
+body { font-family: system-ui, sans-serif; margin: 0; color: #1f2937; }
+input { border: 1px solid #e5e7eb; padding: 8px; border-radius: 6px; outline: none; }
+.trash { color: #d1d5db; cursor: pointer; padding: 2px; }
+.error { color: #ef4444; font-size: 11px; }
+.expenses li { display: flex; justify-content: space-between; padding: 6px 0; }

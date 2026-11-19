@@ -11,6 +11,8 @@ metadata:
 
 "It should look right" is not evidence. Look at the output, then report what you saw.
 
+> **Running `uxg`:** `node "${CLAUDE_PLUGIN_ROOT}/scripts/uxg.mjs" <command>`. If `${CLAUDE_PLUGIN_ROOT}` is not filled in on your platform, the script is `../../scripts/uxg.mjs` from this skill's folder. It is not on the PATH. Below, `uxg <command>` is short for this.
+
 ## 1. Render everything
 
 - **Code:** `uxg screenshot <file-or-url> --widths 360,768,1280`, plus `--theme dark` if the product has a dark theme. Use `--full-page` for long pages. Render each state (loading, empty, error) through whatever switch the page has.

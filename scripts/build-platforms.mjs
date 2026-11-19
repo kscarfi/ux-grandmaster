@@ -31,7 +31,7 @@ const OWNER = { name: "Kemal Salih Carfi", url: "https://kscarfi.com" };
 
 const BOOTSTRAP = `UX Grandmaster is installed. It is a design methodology: frame the problem, research, explore directions, design inside the team's design system, get an independent critique, prove accessibility, verify, hand off and measure.
 
-For any task that designs, reviews, researches or measures a user-facing product, screen, flow, component or UX copy, use the skill "using-ux-grandmaster" first. It describes how to size the task (quick fix, single screen, full project) and which skill to use next. Unrelated tasks do not need it.`;
+For any task that designs, reviews, builds, researches or measures a user-facing product, screen, flow, component or UX copy, including a developer checking their own app, use the skill "using-ux-grandmaster" first. It describes how to size the task (quick fix, single screen, full project) and which skill to use next. Unrelated tasks do not need it.`;
 
 const COMMANDS = {
   brief: "Frame a design problem and write an approved design brief",
@@ -39,6 +39,7 @@ const COMMANDS = {
   critique: "Get an independent, severity-ranked critique of a design",
   a11y: "Audit a design or page against WCAG 2.2 AA",
   handoff: "Prepare a developer handoff spec with acceptance criteria",
+  "ux-check": "Find UX and accessibility problems in this code, with file and line",
 };
 
 const json = (o) => JSON.stringify(o, null, 2) + "\n";
@@ -50,7 +51,9 @@ const claudeManifestPath = ".claude-plugin/plugin.json";
 const claudeExisting = existsSync(join(ROOT, claudeManifestPath))
   ? JSON.parse(readFileSync(join(ROOT, claudeManifestPath), "utf8"))
   : {};
-put(claudeManifestPath, json({ ...META, userConfig: claudeExisting.userConfig }));
+// Claude Code hooks live in .claude-plugin/hooks.json, not hooks/hooks.json, because Gemini CLI,
+// Cursor and Codex read hooks/hooks.json by default and would run a Claude-only command.
+put(claudeManifestPath, json({ ...META, hooks: "./.claude-plugin/hooks.json", userConfig: claudeExisting.userConfig }));
 put(
   ".claude-plugin/marketplace.json",
   json({
@@ -64,7 +67,8 @@ put(
 // Agent Plugins 1.1.0 (Codex, Cursor, GitHub Copilot, VS Code, Kiro)
 put(
   "plugin.json",
-  json({ $schema: "https://agent-plugins.org/schemas/1.1.0/plugin.schema.json", ...META }),
+  // Agent Plugins 1.0.0, not 1.1.0: Codex CLI 0.170 rejects 1.1.0 manifests, and 1.0.0 has no displayName.
+  json({ $schema: "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json", ...(({ displayName, ...rest }) => rest)(META) }),
 );
 
 // Codex marketplace
@@ -98,6 +102,7 @@ put(
     name: META.name,
     description: META.description,
     version: META.version,
+    logo: "assets/icon.png",
     author: { name: META.author.name },
     homepage: META.homepage,
     repository: META.repository,
@@ -126,6 +131,7 @@ put(
     $schema: "https://antigravity.google/schemas/v1/plugin.json",
     name: META.name,
     displayName: META.displayName,
+    logo: "assets/icon.svg",
     description: META.description,
     version: META.version,
     author: META.author,

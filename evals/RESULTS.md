@@ -45,3 +45,34 @@ So without UX Grandmaster, the model frames very vague requests ("make the dashb
 1. New cases aimed at process, where the baseline is weak: covering all states, staying inside a design system, exploring distinct directions, and planning measurement.
 2. Every case will also run on a smaller model, where checklist skills are more likely to matter.
 3. Long critique files made the judge noisy (one grader split 2 to 1). Critique graders will move to shorter, more specific rubrics.
+
+## 2026-11-20: first run with the skills
+
+- **Plugin state:** commit `9d7e230` (27 skills, 4 agents, session hook). Some later files (platform manifests, CI) were added while the run was going; they do not change what Claude Code loads.
+- **Command:** `claude plugin eval . --runs 1 --ablation none --scaffold -j 2 --allow-tools Write Edit Bash`. One run per case: a smoke test, not a measurement.
+- **Cost:** $4.58 for 12 cases, 526 seconds.
+
+| Case | Without skills | With skills | Graders failed with skills |
+|---|---|---|---|
+| `framing-gate` | 0.17 | 1.00 | None. |
+| `framing-gate-onboarding` | 0.67 | 1.00 | None. |
+| `framing-gate-dashboard` | 0.67 | 1.00 | None. |
+| `states-transaction-list` | 0.40 | 1.00 | None. |
+| `critique-seeded-transfer` | 0.85 | 0.92 | No critic subagent dispatched. |
+| `a11y-audit-transfer` | 0.86 | 1.00 | None. Ran the measurement script. |
+| `funnel-payment-drop` | 0.80 | 0.80 | Did not run `uxg funnel` (it wrote its own Python script). |
+| `diverge-savings-directions` | 0.67 | 0.67 | One direction's downside was judged weak (judge 1 of 3); the distinct-directions grader now passed. |
+| `measure-payment-redesign` | 1.00 | 1.00 | None. |
+| `quick-fix-button-label` | 1.00 | 1.00 | None. The skills did not add process to a one-line fix. |
+| `leeward-confirm-screen` | 0.80 | 0.80 | "Primitive tokens" grader. This grader was wrong: see below. |
+| `trigger-silence-coding` | 1.00 | 1.00 | None. |
+
+The "without skills" column comes from the two baseline runs above, so the two columns were not run at the same time. Scores for graders that only make sense with the plugin (skill fired, subagent used, script used) are included in both columns here, which favors the plugin column; the next run uses `--ablation with-without`, which excludes them.
+
+### What the traces showed
+
+Rerunning two cases with `--keep-temp` showed why two process graders failed:
+
+1. **Critique:** the skill loaded, but the model chose the "no subagents" fallback although the `design-critic` agent was available. In this Claude Code version the subagent tool is called `Task`, while the grader looked for `Agent`. Fixes: the skill now says to use a subagent whenever one exists and names the tool; the grader checks for the subagent type in the trace instead of a tool name.
+2. **Funnel:** the skill loaded, then the model ran `which uxg`, did not find it, and wrote its own Python script. Fix: every skill that uses `uxg` now gives the exact command, `node "${CLAUDE_PLUGIN_ROOT}/scripts/uxg.mjs"`, and the relative fallback path.
+3. **Leeward:** the "no primitive tokens" grader matched `--lw-space-2xs` and `--lw-space-3xl`, which are valid semantic tokens in Leeward. Both the baseline and the plugin run may have been marked down wrongly. The pattern now matches only numeric primitives such as `--lw-space-4` and palette steps such as `--lw-color-indigo-600`.

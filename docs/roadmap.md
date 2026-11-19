@@ -28,33 +28,36 @@ Node.js ES modules behind one entry point, `scripts/uxg.mjs`, each with tests (`
 - [x] `decision`: appends a decision with its evidence to `design/decisions.md`
 - [x] `library`: index and search the user's own design library ([library.md](library.md))
 - [x] `setup`: installs the optional browser runtime for `screenshot` and `axe`
+- [x] `scan`: finds likely UX and accessibility problems in web, SwiftUI, Compose, Flutter and React Native code, and detects the target platforms
 
 ## Phase 3: Agents
 
-- [ ] `design-critic`
-- [ ] `accessibility-auditor`
-- [ ] `research-scout`
-- [ ] `usability-walker`
+- [x] `design-critic`
+- [x] `accessibility-auditor`
+- [x] `research-scout`
+- [x] `usability-walker`
 
 ## Phase 4: Skills
 
 | Group | Skills |
 |---|---|
-| Bootstrap | `using-ux-grandmaster` (+ `references/<platform>-tools.md`) |
+| Bootstrap | `using-ux-grandmaster` (+ platform notes, authorities, taste guide in `references/`) |
 | Frame and discover | `framing-design-problems`, `researching-users-and-markets`, `analyzing-ux-data` |
 | Define | `synthesizing-research`, `writing-design-briefs`, `mapping-flows-and-ia` |
 | Explore | `diverging-concepts` (with a local visual companion page) |
 | Design | `designing-with-design-systems`, `designing-in-figma`, `designing-on-canvas`, `designing-in-code`, `designing-all-states`, `writing-ux-copy` |
 | Verify | `critiquing-designs`, `auditing-accessibility`, `verifying-before-handoff`, `receiving-design-feedback` |
 | Hand off and measure | `preparing-handoff`, `measuring-design-impact` |
+| For developers and existing products | `reviewing-ux-in-code`, `improving-ui`, `following-platform-guidelines` |
 | Systems and meta | `building-design-systems`, `writing-grandmaster-skills` |
-| Short commands | `brief`, `research`, `critique`, `a11y`, `handoff` |
+| Short commands | `brief`, `research`, `critique`, `a11y`, `handoff`, `ux-check` |
 
 Every skill states what to do when subagents, hooks or MCP tools are missing.
 
 ## Phase 5: Hooks
 
-- [ ] One session-start script that serves both Claude Code (`hooks/hooks.json`) and Agent Plugins clients (`hooks.json`), and keeps injected context under 10,000 characters
+- [x] One session-start script (`hooks/session-start.mjs`) with output formats for Claude Code and Agent Plugins clients; under 1,000 characters of context
+- [x] Always-on rule (`rules/AGENTS.md`) for Cursor and Antigravity, and a context file (`GEMINI.md`) for Gemini CLI, instead of a shared root `hooks.json` (see platforms.md)
 
 ## Phase 6: Platforms
 
@@ -65,7 +68,6 @@ Every skill states what to do when subagents, hooks or MCP tools are missing.
 
 - [ ] Full eval run with and without the plugin, on at least two models, with a pinned judge model
 - [ ] `evals/RESULTS.md` written from the raw results, failures included, not edited
-- [ ] End-to-end examples in `examples/`
 
 ## Phase 8: Release
 

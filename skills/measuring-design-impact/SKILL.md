@@ -11,6 +11,8 @@ metadata:
 
 A design is a hypothesis until the numbers say otherwise. Decide how you will judge it before it ships, so the result cannot be argued into a success afterwards.
 
+> **Running `uxg`:** `node "${CLAUDE_PLUGIN_ROOT}/scripts/uxg.mjs" <command>`. If `${CLAUDE_PLUGIN_ROOT}` is not filled in on your platform, the script is `../../scripts/uxg.mjs` from this skill's folder. It is not on the PATH. Below, `uxg <command>` is short for this.
+
 ## 1. Metrics
 
 | Kind | What it is | Example for a payment step |

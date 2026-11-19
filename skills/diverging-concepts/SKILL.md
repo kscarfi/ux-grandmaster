@@ -11,6 +11,8 @@ metadata:
 
 The first idea is rarely the best one, and three versions of the first idea are still one idea. Diverge on purpose, then let the user converge.
 
+> **Running `uxg`:** `node "${CLAUDE_PLUGIN_ROOT}/scripts/uxg.mjs" <command>`. If `${CLAUDE_PLUGIN_ROOT}` is not filled in on your platform, the script is `../../scripts/uxg.mjs` from this skill's folder. It is not on the PATH. Below, `uxg <command>` is short for this.
+
 ## 1. Pick the axis
 
 Find the decision that most changes the solution, and make the directions differ on it. Examples:

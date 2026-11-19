@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="UX Grandmaster">
+  <rect width="512" height="512" rx="112" fill="#1b1f3b"/>
+  <g fill="#f4f1ea">
+    <!-- cross -->
+    <rect x="240" y="72" width="32" height="88" rx="8"/>
+    <rect x="212" y="100" width="88" height="32" rx="8"/>
+    <!-- head -->
+    <path d="M176 196c0-26 36-40 80-40s80 14 80 40c0 30-26 52-34 84h-92c-8-32-34-54-34-84z"/>
+    <!-- collar -->
+    <rect x="186" y="292" width="140" height="28" rx="10"/>
+    <!-- body -->
+    <path d="M206 332h100l22 84H184z"/>
+    <!-- base -->
+    <rect x="148" y="414" width="216" height="36" rx="14"/>
+  </g>
+  <!-- accent: a small checkmark in the head, for "verified" design -->
+  <path d="M228 214l20 20 38-40" fill="none" stroke="#1b1f3b" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

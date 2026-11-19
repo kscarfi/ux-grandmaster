@@ -2,6 +2,7 @@
 // UX Grandmaster command-line helpers. Run `node scripts/uxg.mjs help` for the list.
 
 const COMMANDS = {
+  scan: "Find likely UX and accessibility problems in a codebase, and its platform guidelines",
   contrast: "WCAG 2.2 and APCA contrast for color pairs or a token file",
   library: "Index and search your own design library, with page citations",
   funnel: "Step conversion and drop-off from an event CSV, by segment",

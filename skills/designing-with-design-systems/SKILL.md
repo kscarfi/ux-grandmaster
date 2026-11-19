@@ -11,6 +11,8 @@ metadata:
 
 The design system is the team's decisions, already made. Use it before your own taste.
 
+> **Running `uxg`:** `node "${CLAUDE_PLUGIN_ROOT}/scripts/uxg.mjs" <command>`. If `${CLAUDE_PLUGIN_ROOT}` is not filled in on your platform, the script is `../../scripts/uxg.mjs` from this skill's folder. It is not on the PATH. Below, `uxg <command>` is short for this.
+
 ## 1. Find the system
 
 Look, in this order, and stop when you find it:

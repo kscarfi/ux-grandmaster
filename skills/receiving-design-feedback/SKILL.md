@@ -11,6 +11,8 @@ metadata:
 
 Feedback is data about a problem, not an order for a solution. Find the problem behind it, then decide with evidence.
 
+> **Running `uxg`:** `node "${CLAUDE_PLUGIN_ROOT}/scripts/uxg.mjs" <command>`. If `${CLAUDE_PLUGIN_ROOT}` is not filled in on your platform, the script is `../../scripts/uxg.mjs` from this skill's folder. It is not on the PATH. Below, `uxg <command>` is short for this.
+
 ## 1. Clarify
 
 For each piece of feedback, find out:
