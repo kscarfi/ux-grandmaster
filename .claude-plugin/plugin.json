@@ -10,7 +10,16 @@
   "homepage": "https://github.com/kscarfi/ux-grandmaster",
   "repository": "https://github.com/kscarfi/ux-grandmaster",
   "license": "MIT",
-  "keywords": ["design", "ux", "ui", "accessibility", "research", "design-systems", "critique", "wcag"],
+  "keywords": [
+    "design",
+    "ux",
+    "ui",
+    "accessibility",
+    "research",
+    "design-systems",
+    "critique",
+    "wcag"
+  ],
   "userConfig": {
     "library_path": {
       "type": "directory",

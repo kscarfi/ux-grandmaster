@@ -13,7 +13,9 @@
     "uxg": "scripts/uxg.mjs"
   },
   "scripts": {
-    "test": "node --test \"scripts/test/*.test.mjs\""
+    "test": "node --test \"scripts/test/*.test.mjs\"",
+    "check": "npm test && node scripts/check-skills.mjs && node scripts/build-platforms.mjs --check",
+    "build:platforms": "node scripts/build-platforms.mjs"
   },
   "devDependencies": {
     "colorjs.io": "0.7.1"

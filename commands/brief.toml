@@ -1,0 +1,4 @@
+description = "Frame a design problem and write an approved design brief"
+prompt = """
+Use the "brief" skill from UX Grandmaster on this request: {{args}}
+"""

@@ -1,0 +1,6 @@
+{
+  "name": "ux-grandmaster",
+  "version": "0.0.0",
+  "description": "A design methodology for AI agents: frame the problem, research, design with your system, get an independent critique, prove accessibility, then hand off.",
+  "contextFileName": "GEMINI.md"
+}

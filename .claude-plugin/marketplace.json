@@ -1,0 +1,15 @@
+{
+  "name": "ux-grandmaster",
+  "description": "UX Grandmaster: a design methodology plugin for AI agents.",
+  "owner": {
+    "name": "Kemal Salih Carfi",
+    "url": "https://kscarfi.com"
+  },
+  "plugins": [
+    {
+      "name": "ux-grandmaster",
+      "source": "./",
+      "description": "A design methodology for AI agents: frame the problem, research, design with your system, get an independent critique, prove accessibility, then hand off."
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+description = "Prepare a developer handoff spec with acceptance criteria"
+prompt = """
+Use the "handoff" skill from UX Grandmaster on this request: {{args}}
+"""

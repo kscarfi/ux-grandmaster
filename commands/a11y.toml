@@ -1,0 +1,4 @@
+description = "Audit a design or page against WCAG 2.2 AA"
+prompt = """
+Use the "a11y" skill from UX Grandmaster on this request: {{args}}
+"""

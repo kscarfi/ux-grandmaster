@@ -1,0 +1,4 @@
+description = "Get an independent, severity-ranked critique of a design"
+prompt = """
+Use the "critique" skill from UX Grandmaster on this request: {{args}}
+"""

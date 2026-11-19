@@ -1,0 +1,4 @@
+description = "Plan design research or run sourced desk research"
+prompt = """
+Use the "research" skill from UX Grandmaster on this request: {{args}}
+"""
