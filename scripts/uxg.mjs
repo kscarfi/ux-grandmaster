@@ -4,6 +4,11 @@
 const COMMANDS = {
   contrast: "WCAG 2.2 and APCA contrast for color pairs or a token file",
   library: "Index and search your own design library, with page citations",
+  funnel: "Step conversion and drop-off from an event CSV, by segment",
+  cohort: "Retention table by start week or month",
+  "ab-test": "Read an A/B test (with sample ratio check) or plan its sample size",
+  sources: "Log research sources and check dates, staleness and triangulation",
+  decision: "Append a design decision with its evidence to design/decisions.md",
 };
 
 const [, , name, ...rest] = process.argv;
