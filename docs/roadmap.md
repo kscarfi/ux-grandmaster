@@ -10,21 +10,24 @@ UX Grandmaster ships as one complete 1.0 release. This file tracks the build in 
 
 ## Phase 1: Evals before skills
 
+- [x] First five cases: framing gate, seeded critique, accessibility audit, funnel diagnosis, trigger silence
 - [ ] Eval cases for every core skill, 3 or more each, in `claude plugin eval` format
-- [ ] Trigger calibration cases: skills fire on design work and stay silent on unrelated tasks
-- [ ] Fixtures written from scratch: screens with seeded issues, token files with known contrast pairs, analytics CSVs with known answers
+- [ ] More trigger calibration cases: skills fire on design work and stay silent on unrelated tasks
+- [x] Fixtures written from scratch: a screen with seeded issues and an analytics CSV with a known answer
 - [ ] Baseline run with a manifest-only plugin, so the no-plugin scores exist before any skill text
 
 ## Phase 2: Scripts
 
-Node.js ES modules, each with tests (`node --test`), clear error messages and documented constants.
+Node.js ES modules behind one entry point, `scripts/uxg.mjs`, each with tests (`node --test`), clear error messages and documented constants.
 
-- [ ] `contrast`: WCAG 2.2 ratio and APCA, for color pairs or a token file
-- [ ] `axe-check`: Playwright plus axe-core on a URL or local HTML
-- [ ] `screenshot`: renders a page at given viewport sizes
-- [ ] `funnel`, `cohort`, `ab-test`: analytics with sample ratio check, effect sizes and confidence intervals
-- [ ] `source-log`: template and validator for research sources
-- [ ] `decision-log`: appends a decision with its evidence to `design/decisions.md`
+- [x] `contrast`: WCAG 2.2 ratio and APCA, for color pairs, token globs or a pairs file
+- [x] `axe`: Playwright plus axe-core on a URL or local HTML
+- [x] `screenshot`: renders a page at given viewport sizes
+- [x] `funnel`, `cohort`, `ab-test`: analytics with sample ratio check, intervals and sample size
+- [x] `sources`: research source log with date, staleness and triangulation checks
+- [x] `decision`: appends a decision with its evidence to `design/decisions.md`
+- [x] `library`: index and search the user's own design library ([library.md](library.md))
+- [x] `setup`: installs the optional browser runtime for `screenshot` and `axe`
 
 ## Phase 3: Agents
 
@@ -74,4 +77,4 @@ Every skill states what to do when subagents, hooks or MCP tools are missing.
 
 ## Open questions
 
-- **Leeward:** the plan uses the Leeward design system for examples and evals, but it is not in this repository yet.
+- **Screenshots inside evals:** the eval sandbox hides the home folder, where the browser runtime lives. Cases that need `uxg screenshot` or `uxg axe` need the runtime reachable from inside the sandbox.

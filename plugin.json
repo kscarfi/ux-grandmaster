@@ -1,0 +1,15 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.1.0/plugin.schema.json",
+  "name": "ux-grandmaster",
+  "displayName": "UX Grandmaster",
+  "version": "0.0.0",
+  "description": "A design methodology for AI agents: frame the problem, research, design with your system, get an independent critique, prove accessibility, then hand off.",
+  "author": {
+    "name": "Kemal Salih Carfi",
+    "url": "https://kscarfi.com"
+  },
+  "homepage": "https://github.com/kscarfi/ux-grandmaster",
+  "repository": "https://github.com/kscarfi/ux-grandmaster",
+  "license": "MIT",
+  "keywords": ["design", "ux", "ui", "accessibility", "research", "design-systems", "critique", "wcag"]
+}

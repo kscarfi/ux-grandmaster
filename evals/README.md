@@ -1,0 +1,36 @@
+# Evals
+
+These cases prove, or disprove, that UX Grandmaster changes what an agent does. Each case runs with the plugin and without it, and the difference is what the plugin contributed.
+
+The suite uses the `claude plugin eval` format from Claude Code: one folder per case, with `prompt.md`, `graders/*.md` and an optional `case.yaml`.
+
+## Cases
+
+| Case | What it checks |
+|---|---|
+| `framing-gate` | A vague request ("design a money transfer screen") leads to framing questions, not a finished screen. |
+| `critique-seeded-transfer` | A review of a screen with 10 seeded problems. The score is the share of problems found, plus severity ranking and no invented details. |
+| `a11y-audit-transfer` | A WCAG 2.2 AA audit of the same screen: measured contrast ratios, issues automated tools miss, an honest verdict and an honest scope. |
+| `funnel-payment-drop` | A drop-off question on raw event data with a known answer built in: one device segment fails at the payment step, and a tracking change hides some events. |
+| `trigger-silence-coding` | An unrelated coding task. UX Grandmaster must not fire. |
+
+## Fixtures
+
+- `fixtures/transfer-screen/index.html`: a transfer screen written for these evals, with seeded problems. The answer key lives only in the graders.
+- `fixtures/checkout-funnel/generate.mjs`: writes `checkout-events.csv` from a fixed seed. The known truth is described at the top of the script.
+
+Fixtures are original. No case study, client work or copyrighted material is used.
+
+## Run
+
+From the repository root:
+
+```bash
+claude plugin eval . --scaffold --allow-tools Write Edit Bash --trust-plugin
+```
+
+- `--scaffold` copies each case's fixture into its empty workspace.
+- `--allow-tools` lets the agent write its report and run scripts. Bash runs inside Claude Code's sandbox.
+- Add `--model <model>` to pin the model under test, and `--judge-model <model>` to pin the judge.
+
+Results go to `evals/results/`, which is not committed. Summaries, including failures, go to [RESULTS.md](RESULTS.md).
