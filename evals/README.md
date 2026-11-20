@@ -47,4 +47,6 @@ claude plugin eval . --scaffold --allow-tools Write Edit Bash --trust-plugin
 - `--allow-tools` lets the agent write its report and run scripts. Bash runs inside Claude Code's sandbox.
 - Add `--model <model>` to pin the model under test, and `--judge-model <model>` to pin the judge.
 
+Eval runs use your Claude plan or API usage. A full two-arm run of every case is large; on a plan with usage windows, run cases one at a time (`--case <name>`) and stop at the first usage-limit message.
+
 Results go to `evals/results/`, which is not committed. Summaries, including failures, go to [RESULTS.md](RESULTS.md).

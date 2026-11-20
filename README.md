@@ -19,6 +19,8 @@ Measured with Claude Opus 5.5 in the eval suite, one run per case, so treat them
 | "Review the UX of this visionOS view" | Found the problems, did not cite Apple's guidelines (0.80) | Applied and cited Apple's visionOS guidance (1.00) |
 | "Is this page accessible?" | Correct findings, ratios worked out by hand | Same findings, ratios measured with `uxg contrast` (the tool-use grader only counts with the plugin) |
 
+On the smaller Claude Haiku 5.5 the gaps are wider: without UX Grandmaster it framed the transfer request half the time (0.50 against 1.00), skipped loading and error states (0.40 against 1.00) and used design system tokens the system forbids (0.80 against 1.00).
+
 Where the model is already strong, the scores are equal: with and without the plugin it found the UX problems in an AI-built React app with file and line, and followed the Leeward design system's rules. It also stayed silent on unrelated coding and database tasks, as it should. The full results, including failures and mistakes in our own graders, are in [evals/RESULTS.md](evals/RESULTS.md).
 
 ## Install

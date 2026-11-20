@@ -61,19 +61,19 @@ Every skill states what to do when subagents, hooks or MCP tools are missing.
 
 ## Phase 6: Platforms
 
-- [ ] A manifest for every platform in [platforms.md](platforms.md), each checked against official docs on the day it is written
-- [ ] Install tested on every platform that can be installed on this machine; the rest are marked as format-verified only
+- [x] A manifest for every platform in [platforms.md](platforms.md), each checked against official docs on the day it is written
+- [x] Install tested on every platform that can be installed on this machine (8 agents); the rest are marked as format-verified only
 
 ## Phase 7: Proof
 
-- [ ] Full eval run with and without the plugin, on at least two models, with a pinned judge model
-- [ ] `evals/RESULTS.md` written from the raw results, failures included, not edited
+- [ ] Full eval run with and without the plugin, on at least two models, with a pinned judge model (Opus done one case at a time; Haiku in progress)
+- [x] `evals/RESULTS.md` written from the raw results, failures included, not edited
 
 ## Phase 8: Release
 
-- [ ] Plugin icon
-- [ ] `claude plugin validate --strict` and each platform's own validator pass
-- [ ] Final README with install steps for every platform tested
+- [x] Plugin icon
+- [x] `claude plugin validate` (including the directory profile), `gemini extensions validate` and `agy plugin validate` pass; `agy --strict` lists three expected cross-platform warnings
+- [x] Final README with install steps for every platform tested
 - [ ] Tag `v1.0.0`, changelog entry, GitHub release
 - [ ] Submission to plugin directories, only after Kemal approves
 

@@ -18,6 +18,10 @@ A public record of how UX Grandmaster is built: the decisions, and every mistake
 
 The first baseline run (no skills) scored close to full marks on critique, accessibility and funnel content. The model found 9 of 10 seeded issues and computed contrast ratios correctly without a tool. Those cases could not show what UX Grandmaster adds. The one clear gap was process: asked to design a screen with no context, the model built it without asking a single question. New cases now target process (framing, states, design system use, divergent exploration, measurement planning), and every case runs on a smaller model too. Details in [evals/RESULTS.md](../evals/RESULTS.md).
 
+### Finding: small models need a direct session note
+
+On Claude Haiku 5.5 the skills almost never loaded on their own: asked to "design a money transfer screen", the agent built HTML straight away even with the plugin installed. The session-start note only said the plugin existed. Rewritten to say that loading `using-ux-grandmaster` is the first step for user-facing design and review work, it raised Haiku's framing score from 0.25 to 1.00 and did not make the plugin fire on backend, coding or one-line copy tasks. Details in [evals/RESULTS.md](../evals/RESULTS.md).
+
 ### AI mistakes and how they were caught
 
 | # | Mistake | How it was caught | Fix |

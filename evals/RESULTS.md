@@ -91,3 +91,44 @@ Rerunning two cases with `--keep-temp` showed why two process graders failed:
 | `trigger-silence-backend` | 1.00 | 1.00 | 0.00 | No UX Grandmaster skill fired on a database migration. |
 
 With the strongest model, the plugin's measurable effect is on process (framing, states, citing platform guidance, using measurement tools), not on spotting problems the model already sees. The next run uses a smaller model.
+
+## 2026-11-20: Haiku run, aborted
+
+- **Command:** the whole suite, `--ablation with-without --model claude-haiku-5-5 --judge-model claude-sonnet-5-5 -j 3`.
+- **Outcome:** no usable results. Most runs and judge calls stopped with "You've hit your 5-hour limit". Scores of 0.00 from that run are errors, not measurements, and are not reported.
+- **Change:** cases now run one at a time, and the loop stops at the first usage-limit message, so a limit leaves the finished cases intact.
+
+## 2026-11-20: Haiku, eight core cases, with and without the plugin
+
+- **Plugin state:** commit `5d6268a`.
+- **Command:** per case, `claude plugin eval . --runs 1 --ablation with-without --model claude-haiku-5-5 --judge-model claude-sonnet-5-5 --scaffold --allow-tools Write Edit Bash "WebFetch(domain:developer.apple.com)" --case <case>`.
+- **Cost:** $2.32 for 8 cases, both arms.
+
+| Case | With | Without | Δ | Notes |
+|---|---|---|---|---|
+| `framing-gate` | 0.25 | 0.50 | -0.25 | The skill never loaded in the with-arm (0 skill calls); the agent built an HTML screen. |
+| `states-transaction-list` | 1.00 | 0.40 | +0.60 | Without the plugin: no loading and no error state. |
+| `critique-seeded-transfer` | 0.92 | 0.83 | +0.08 | No critic subagent in the with-arm. |
+| `a11y-audit-transfer` | 1.00 | 1.00 | 0.00 | No measurement script in the with-arm. |
+| `dev-review-vibe-app` | 0.86 | 0.86 | 0.00 | Both arms failed "prioritized"; no `uxg scan` in the with-arm. |
+| `dev-review-visionos` | 1.00 | 1.00 | 0.00 | |
+| `funnel-payment-drop` | 1.00 | 1.00 | 0.00 | |
+| `leeward-confirm-screen` | 1.00 | 0.80 | +0.20 | Without the plugin: primitive tokens used. |
+
+**Finding:** the smaller model rarely loaded the skills or used the plugin's tools by itself. The session-start note only said the skill existed.
+
+**Change:** the note (and the always-on rule for Cursor and Antigravity, and `GEMINI.md`) now says that the first step for user-facing design, build, review or audit work is to load `using-ux-grandmaster`, that "design a screen" with no user context starts with framing, and that backend work does not use it.
+
+### After the change (same day)
+
+| Case | Model | Command | Result |
+|---|---|---|---|
+| `framing-gate` | Haiku | `--runs 2 --ablation none` | 1.00, 1.00 |
+| `dev-review-vibe-app` | Haiku | `--runs 2 --ablation none` | 1.00, 0.88 (judge split 1 to 2 on "prioritized") |
+| `framing-gate` | Haiku | `--ablation with-without` | with 1.00, without 0.50, Δ +0.50 |
+| `trigger-silence-backend` | Haiku | `--ablation with-without` | with 1.00, without 1.00 |
+| `trigger-silence-coding` | Haiku | `--ablation with-without` | with 1.00, without 1.00 |
+| `quick-fix-button-label` | Haiku | `--ablation with-without` | with 1.00, without 1.00 |
+| `trigger-silence-backend`, `quick-fix-button-label`, `framing-gate` | Opus | `--ablation none` | 1.00 each |
+
+The stronger note fixed the framing gap on Haiku without making UX Grandmaster fire on backend, coding or one-line copy tasks.
