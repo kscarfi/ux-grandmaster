@@ -1,5 +1,7 @@
 # Privacy
 
+The published version of this policy is at https://kscarfi.github.io/ux-grandmaster/privacy/.
+
 UX Grandmaster does not collect, store or send any data. It has no servers, no analytics and no telemetry.
 
 ## Personal data

@@ -60,7 +60,7 @@ const DIRECTORY_LINKS = {
   icon: "./assets/icon.png",
   documentationUrl: "https://github.com/kscarfi/ux-grandmaster#readme",
   supportUrl: "https://github.com/kscarfi/ux-grandmaster/issues",
-  privacyPolicyUrl: "https://github.com/kscarfi/ux-grandmaster/blob/main/PRIVACY.md",
+  privacyPolicyUrl: "https://kscarfi.github.io/ux-grandmaster/privacy/",
   termsOfServiceUrl: "https://github.com/kscarfi/ux-grandmaster/blob/main/LICENSE",
 };
 const NETWORK_HOSTS = [
