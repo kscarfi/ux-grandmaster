@@ -70,3 +70,7 @@ Notes from the docs:
 ## Capability gaps
 
 Subagents, hooks and slash commands are not part of the portable Agent Plugins core. Every skill says what to do when a capability is missing. For example, when subagents are not available, the critique runs inline with a fresh-eyes checklist and says so in its report.
+
+## Claude directory edition
+
+The Claude directory (claude.ai/directory/manage) accepts only text plugins from organizations that are not Verified: no hooks, scripts, `package.json` or lockfiles. On 2026-11-22 the portal blocked the full repository for these reasons. The `claude-directory` branch holds a text-only edition with every skill and agent, built by `npm run build:directory`; in that edition the skills measure with the tools the agent has instead of the `uxg` scripts. To update it, run the build and replace the branch contents with `dist/claude-directory/`.
