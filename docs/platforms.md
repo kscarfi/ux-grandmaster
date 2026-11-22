@@ -84,5 +84,5 @@ The Claude directory (claude.ai/directory/manage) accepts only text plugins from
 | GitHub Copilot (awesome-copilot) | External plugin issue, tag `v1.1.0` | Submitted: github/awesome-copilot#6565 |
 | Antigravity Marketplace | Interest form | Submitted |
 | Gemini CLI extension gallery | `gemini-cli-extension` repository topic, daily crawl | Waiting for crawl |
-| OpenAI (ChatGPT and Codex) | Developer portal, `npm run build:directory`-style archive from `scripts/build-submission.mjs openai` | Draft saved; the portal is not accepting skills-only submissions |
+| OpenAI (ChatGPT and Codex) | Developer portal, archive from `node scripts/build-submission.mjs openai` | Draft saved; the portal is not accepting skills-only submissions |
 | Factory | Not open to outside submissions | Users add this repository as a marketplace |
