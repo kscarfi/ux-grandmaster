@@ -1,6 +1,6 @@
 ---
 name: designing-in-figma
-description: Works in Figma through the Figma MCP server - reading design context, variables, components and screenshots, and writing only when the session has write tools. Use when the user shares a Figma link or node, asks to design, inspect or update something in Figma, or wants code generated from a Figma design.
+description: Works with Figma files through the Figma MCP server or, when no server is connected, the Figma REST API - reading frames, layers, text, variables, components, comments and screenshots, then running the right UX Grandmaster work on them (critique, accessibility, copy review, design system audit, handoff, code). Use whenever the user shares a figma.com link, mentions a Figma file, frame, FigJam board or Slides deck, or asks to design, inspect, review or update something in Figma.
 license: MIT
 metadata:
   author: Kemal Salih Carfi
@@ -9,37 +9,51 @@ metadata:
 
 # Designing in Figma
 
-Figma holds the team's real components and variables. Read them before designing, and never pretend to have edited a file you cannot edit.
+Figma holds the team's real components, variables and decisions. Read them before judging or designing, and never claim to have edited a file you cannot edit.
 
-## 1. Check what you can do
+> **Running `uxg`:** `node "${CLAUDE_PLUGIN_ROOT}/scripts/uxg.mjs" <command>`. If `${CLAUDE_PLUGIN_ROOT}` is not filled in on your platform, the script is `../../scripts/uxg.mjs` from this skill's folder. It is not on the PATH. Below, `uxg <command>` is short for this.
 
-List the Figma tools available in this session. Tool names differ by client and server version; use the exact names your session shows. Typical read tools return design context or code for a node, the variables used, metadata, a screenshot and Code Connect mappings. Write tools, if present, create or change nodes.
+## 1. Find your access, in this order
 
-- **No Figma tools:** tell the user, and offer to connect the Figma MCP server or to design on another surface (`designing-in-code`).
-- **Read tools only:** you can inspect, critique and generate code from Figma, but not change the file. Say so before planning any edit.
+1. **Figma MCP server.** Look for Figma tools in this session. Use the exact names your session lists. Figma's official server (checked 2026-11-22) offers read tools such as `get_design_context`, `get_metadata`, `get_screenshot`, `get_variable_defs`, `get_comments`, `search_design_system`, `get_code_connect_map` and `get_figjam`, and, on the remote server, write tools such as `use_figma`, `create_new_file`, `upload_assets` and `generate_diagram`. Availability differs between the remote and desktop servers and by plan.
+2. **Figma REST API**, when no server is connected but the user has set a personal access token in `FIGMA_TOKEN` (scope `file_content:read`):
+   - `uxg figma outline <url>`: pages and frames with node ids
+   - `uxg figma export <url> --node <id>`: frames as PNG, to look at
+   - `uxg figma text <url>`: every visible text layer, for a copy review
+   - `uxg figma inventory <url>`: colors, font sizes and fonts in use, and how many fills use variables
+   Never ask the user to paste a token into the chat. Ask them to set it in their own shell.
+3. **Neither:** ask for screenshots or an export, and say what you cannot see (layers, variables, components).
 
-## 2. Read before designing
+A Figma link carries the file key and often a node id (`node-id=12-34`, which is `12:34` in the API). Use them; do not guess which frame is meant.
 
-For the frame or component the user points to:
+## 2. Read before acting
 
-1. Get a screenshot, and look at it.
-2. Get the design context or metadata for structure, layers and layout.
-3. Get the variables: colors, spacing, type and radius tokens in use.
-4. Get Code Connect mappings if they exist, so code uses the real components.
+For the frames in question: a screenshot (look at it), the structure (metadata or outline), the variables and styles in use, components and Code Connect mappings, and open comments. Comments often hold the real requirements and unresolved decisions.
 
-A Figma link carries a node id (`node-id=` in the URL). Use it; do not guess which frame is meant.
+## 3. Route to the work
 
-## 3. Designing with write tools
+Say what you can do with what you read, and start the matching skill. When the request is open ("take a look at this"), propose the two or three most useful next steps:
 
-- Use the library's components and variables, never detached copies or raw values.
-- One frame per screen and per state, named clearly ("Transfer / Error"), at real device sizes.
-- Auto layout, so content can grow.
-- After every change, take a screenshot and look at it.
+| What the user wants | Skills |
+|---|---|
+| Feedback on a design | `critiquing-designs` with the screenshots |
+| Accessibility | `auditing-accessibility`: contrast with `uxg contrast` on the colors from the variables or the inventory, plus structure and text sizes |
+| Copy review | `writing-ux-copy` on the text layers |
+| Missing states | `designing-all-states` against the frames that exist |
+| Design system drift | `designing-with-design-systems`: raw colors and one-off sizes from the inventory, detached components |
+| Platform fit | `following-platform-guidelines` for the target device |
+| Developer handoff | `preparing-handoff`, using variables, components and Code Connect |
+| Code from the design | `designing-in-code`, mapping variables to tokens and components through Code Connect or by name |
+| A flow or diagram in FigJam | `mapping-flows-and-ia` |
 
-## 4. Code from Figma
+## 4. Designing with write tools
 
-Map Figma variables to the project's tokens and Figma components to the project's components (Code Connect, or by name). Where there is no match, say so instead of hardcoding values from the inspector.
+Only when the session has write tools and the user asked for changes:
 
-## 5. Then
+- Use the library's components and variables, never detached copies or raw values. Search the design system first.
+- One frame per screen and per state, named "Screen / State", at real device sizes, with auto layout.
+- After every change, take a screenshot and look at it. Then pass it through `refining-generated-designs` before showing it.
 
-Run `critiquing-designs` on the screenshots and `auditing-accessibility` on the colors and structure.
+## 5. Other design tools
+
+For Penpot, Sketch, Canva, Framer, Claude Design and other tools connected through MCP, use `working-with-design-tools`. The same order applies: find the tools, read, look, then route.

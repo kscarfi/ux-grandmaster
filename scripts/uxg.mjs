@@ -2,6 +2,7 @@
 // UX Grandmaster command-line helpers. Run `node scripts/uxg.mjs help` for the list.
 
 const COMMANDS = {
+  figma: "Read a Figma file through the REST API: outline, text, inventory, export",
   scan: "Find likely UX and accessibility problems in a codebase, and its platform guidelines",
   contrast: "WCAG 2.2 and APCA contrast for color pairs or a token file",
   library: "Index and search your own design library, with page citations",
