@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy policy · UX Grandmaster</title>
+<link rel="icon" href="../icon.png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main>
+  <header><img src="../icon.png" alt=""><a href="../">UX Grandmaster</a></header>
+  <h1>Privacy policy</h1>
+  <p><strong>Last updated: 22 November 2026</strong></p>
+  <p>UX Grandmaster does not collect, store or send any data. It has no servers, no accounts, no analytics and no telemetry.</p>
+
+  <h2>Personal data</h2>
+  <p>Some skills read content you give your AI agent that can contain personal data, for example interview notes with participant details, or comments in a design file with author names. UX Grandmaster does not store this content anywhere. The skills tell the agent to remove personal data from findings it shares, and not to put research participant data into tools that are not approved for it.</p>
+
+  <h2>What runs where</h2>
+  <ul>
+    <li><strong>Skills and agents</strong> are instructions that your AI agent reads. They run inside your agent, under your agent provider's own privacy terms.</li>
+    <li><strong>Web pages.</strong> Some skills ask your agent to read official design guidelines (for example developer.apple.com, developer.android.com, w3.org and nngroup.com) with the web tools your agent already has, with your permission. No data about you is sent to these sites.</li>
+    <li><strong>Design tools.</strong> If you connect Figma or another design tool to your agent, the skills use that connection's tools to read designs. Before any write or publish action in such a tool, the agent asks you first.</li>
+  </ul>
+
+  <h2>Optional local scripts</h2>
+  <p>The full edition on GitHub also includes the <code>uxg</code> command-line scripts. They run only on your own computer:</p>
+  <ul>
+    <li><code>uxg setup</code> downloads Playwright, axe-core and a Chromium browser from the npm registry and Playwright's download servers.</li>
+    <li><code>uxg library</code> indexes design books and papers you choose into a folder on your computer. Nothing leaves your machine.</li>
+    <li><code>uxg figma</code> reads Figma files with a personal access token you set in your own shell. The token is sent only to api.figma.com and is never stored or printed.</li>
+  </ul>
+  <p>Editions published in plugin directories may contain skills and agents only, without these scripts.</p>
+
+  <h2>Children</h2>
+  <p>UX Grandmaster is made for professionals and is not intended for people under 18.</p>
+
+  <h2>Changes</h2>
+  <p>Changes to this policy are published on this page and in the project's history on GitHub.</p>
+
+  <h2>Contact</h2>
+  <p>Questions or concerns: <a href="https://github.com/kscarfi/ux-grandmaster/issues">open an issue on GitHub</a>, or report privately through the repository's Security tab.</p>
+
+  <footer><a href="../">UX Grandmaster</a> · MIT License</footer>
+</main>
+</body>
+</html>
