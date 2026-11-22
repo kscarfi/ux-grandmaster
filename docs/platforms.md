@@ -85,4 +85,5 @@ The Claude directory (claude.ai/directory/manage) accepts only text plugins from
 | Antigravity Marketplace | Interest form | Submitted |
 | Gemini CLI extension gallery | `gemini-cli-extension` repository topic, daily crawl | Waiting for crawl |
 | OpenAI (ChatGPT and Codex) | Developer portal, archive from `node scripts/build-submission.mjs openai` | Draft saved; the portal is not accepting skills-only submissions |
+| mcp.directory | Submit-skill form, link to `skills/using-ux-grandmaster/SKILL.md` | Submitted |
 | Factory | Not open to outside submissions | Users add this repository as a marketplace |
