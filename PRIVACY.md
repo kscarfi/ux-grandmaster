@@ -2,6 +2,10 @@
 
 UX Grandmaster does not collect, store or send any data. It has no servers, no analytics and no telemetry.
 
+## Personal data
+
+Some skills read content you give your agent that can contain personal data, for example interview notes with participant details, or comments in a design file with author names. UX Grandmaster does not store this content anywhere. The skills tell the agent to remove personal data from findings it shares and not to put research participant data into tools that are not approved for it.
+
 ## What runs where
 
 - **Skills and agents** are instructions that your AI agent reads. They run inside your agent, under your agent's own privacy terms.
