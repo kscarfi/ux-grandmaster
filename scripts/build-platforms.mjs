@@ -55,6 +55,14 @@ const claudeExisting = existsSync(join(ROOT, claudeManifestPath))
 // Cursor and Codex read hooks/hooks.json by default and would run a Claude-only command.
 // Hosts the skills and scripts may reach: official guideline sites, the Figma API,
 // and the npm registry and Playwright CDN used once by `uxg setup`.
+// Links read by Anthropic's directory listing (not by Claude Code itself).
+const DIRECTORY_LINKS = {
+  icon: "./assets/icon.png",
+  documentationUrl: "https://github.com/kscarfi/ux-grandmaster#readme",
+  supportUrl: "https://github.com/kscarfi/ux-grandmaster/issues",
+  privacyPolicyUrl: "https://github.com/kscarfi/ux-grandmaster/blob/main/PRIVACY.md",
+  termsOfServiceUrl: "https://github.com/kscarfi/ux-grandmaster/blob/main/LICENSE",
+};
 const NETWORK_HOSTS = [
   "api.figma.com", "developer.apple.com", "developer.android.com", "m3.material.io", "developers.meta.com",
   "learn.microsoft.com", "fluent2.microsoft.design", "www.w3.org", "developer.mozilla.org", "web.dev",
@@ -63,7 +71,7 @@ const NETWORK_HOSTS = [
 ];
 put(
   claudeManifestPath,
-  json({ ...META, hooks: "./.claude-plugin/hooks.json", network: { hosts: NETWORK_HOSTS }, userConfig: claudeExisting.userConfig }),
+  json({ ...META, ...DIRECTORY_LINKS, hooks: "./.claude-plugin/hooks.json", network: { hosts: NETWORK_HOSTS }, userConfig: claudeExisting.userConfig }),
 );
 put(
   ".claude-plugin/marketplace.json",

@@ -92,6 +92,7 @@ async function buildClaudeDirectory() {
   const manifest = {
     name: m.name, displayName: m.displayName, version: m.version, description: m.description,
     author: m.author, homepage: m.homepage, repository: m.repository, license: m.license, keywords: m.keywords,
+    icon: m.icon, documentationUrl: m.documentationUrl, supportUrl: m.supportUrl, privacyPolicyUrl: m.privacyPolicyUrl, termsOfServiceUrl: m.termsOfServiceUrl,
   };
   writeFileSync(join(stage, ".claude-plugin", "plugin.json"), JSON.stringify(manifest, null, 2) + "\n");
 
