@@ -74,3 +74,15 @@ Subagents, hooks and slash commands are not part of the portable Agent Plugins c
 ## Claude directory edition
 
 The Claude directory (claude.ai/directory/manage) accepts only text plugins from organizations that are not Verified: no hooks, scripts, `package.json` or lockfiles. On 2026-11-22 the portal blocked the full repository for these reasons. The `claude-directory` branch holds a text-only edition with every skill and agent, built by `npm run build:directory`; in that edition the skills measure with the tools the agent has instead of the `uxg` scripts. To update it, run the build and replace the branch contents with `dist/claude-directory/`.
+
+## Directory submissions (2026-11-22)
+
+| Directory | How | Status |
+|---|---|---|
+| Claude directory | Developer portal, `claude-directory` branch (text-only edition) | In review |
+| Cursor Marketplace | Publisher application form | Submitted |
+| GitHub Copilot (awesome-copilot) | External plugin issue, tag `v1.1.0` | Submitted: github/awesome-copilot#6565 |
+| Antigravity Marketplace | Interest form | Submitted |
+| Gemini CLI extension gallery | `gemini-cli-extension` repository topic, daily crawl | Waiting for crawl |
+| OpenAI (ChatGPT and Codex) | Developer portal, `npm run build:directory`-style archive from `scripts/build-submission.mjs openai` | Draft saved; the portal is not accepting skills-only submissions |
+| Factory | Not open to outside submissions | Users add this repository as a marketplace |
