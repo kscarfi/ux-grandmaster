@@ -39,7 +39,7 @@ One file cannot satisfy all of them. So the only hook, the session-start bootstr
 
 ## Platforms
 
-Install tests ran on 2026-11-20 on macOS, each CLI in an empty home folder, installing from a local clone of this repository.
+Install tests ran on 2026-11-20 on macOS, each CLI in an empty home folder, installing from a local clone of this repository. Skill counts below are from 1.0.0 (31 skills); 1.1.0 has 40. Rechecked on 2026-11-22 from GitHub: Claude Code 1.0.0 install, and GitHub Copilot CLI 1.1.0 install with 40 skills and no warnings.
 
 | Platform | How it loads UX Grandmaster | Install command | Install test (2026-11-20) |
 |---|---|---|---|
