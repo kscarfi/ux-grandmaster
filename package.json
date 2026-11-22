@@ -16,7 +16,8 @@
     "test": "node --test \"scripts/test/*.test.mjs\"",
     "check": "npm test && node scripts/check-skills.mjs && node scripts/build-platforms.mjs --check && npm run scan:secrets",
     "build:platforms": "node scripts/build-platforms.mjs",
-    "scan:secrets": "if command -v gitleaks >/dev/null 2>&1; then gitleaks dir . --no-banner && gitleaks git . --no-banner; else echo \"gitleaks not installed: secret scan skipped\"; fi"
+    "scan:secrets": "if command -v gitleaks >/dev/null 2>&1; then gitleaks dir . --no-banner && gitleaks git . --no-banner; else echo \"gitleaks not installed: secret scan skipped\"; fi",
+    "build:directory": "node scripts/build-submission.mjs claude-directory"
   },
   "devDependencies": {
     "colorjs.io": "0.7.1"
