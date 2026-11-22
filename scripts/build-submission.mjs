@@ -54,6 +54,8 @@ cpSync(join(ROOT, "scripts", "uxg.mjs"), join(stage, "scripts", "uxg.mjs"));
 cpSync(join(ROOT, "scripts", "lib"), join(stage, "scripts", "lib"), { recursive: true });
 cpSync(join(ROOT, "scripts", "commands"), join(stage, "scripts", "commands"), { recursive: true });
 for (const f of ["README.md", "LICENSE", "assets/icon.png"]) cpSync(join(ROOT, f), join(stage, f), { recursive: true });
+// Root Agent Plugins manifest with extensions.com.openai.interface: the portal reads the listing from it.
+cpSync(join(ROOT, "plugin.json"), join(stage, "plugin.json"));
 
 // The Claude Code platform note is not useful in other agents.
 rmSync(join(stage, "skills", "using-ux-grandmaster", "references", "claude-code.md"), { force: true });

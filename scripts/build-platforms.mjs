@@ -63,6 +63,27 @@ const DIRECTORY_LINKS = {
   privacyPolicyUrl: "https://kscarfi.github.io/ux-grandmaster/privacy/",
   termsOfServiceUrl: "https://github.com/kscarfi/ux-grandmaster/blob/main/LICENSE",
 };
+const OPENAI_INTERFACE = {
+  displayName: "UX Grandmaster",
+  shortDescription: "Design method for AI agents",
+  longDescription:
+    "UX Grandmaster helps you design and review products the way a senior product designer would. It frames vague requests before designing, designs inside your design system and your platform's guidelines, finds UX and accessibility problems in your code with file and line, critiques designs with fresh eyes, and checks accessibility against WCAG 2.2 AA. It picks the right skill from your message and what you attach: a Figma link, a screenshot, code, interview notes or a CSV.",
+  developerName: "Kemal Salih Carfi",
+  category: "Productivity",
+  capabilities: ["Read", "Write"],
+  websiteURL: "https://kscarfi.github.io/ux-grandmaster/",
+  supportURL: "https://github.com/kscarfi/ux-grandmaster/issues",
+  privacyPolicyURL: "https://kscarfi.github.io/ux-grandmaster/privacy/",
+  termsOfServiceURL: "https://github.com/kscarfi/ux-grandmaster/blob/main/LICENSE",
+  defaultPrompt: [
+    "Design a money transfer screen for our banking app.",
+    "Check my app for UX and accessibility problems.",
+    "What did we learn from these interview notes?",
+  ],
+  brandColor: "#1B1F3B",
+  composerIcon: "./assets/icon.png",
+  logo: "./assets/icon.png",
+};
 const NETWORK_HOSTS = [
   "api.figma.com", "developer.apple.com", "developer.android.com", "m3.material.io", "developers.meta.com",
   "learn.microsoft.com", "fluent2.microsoft.design", "www.w3.org", "developer.mozilla.org", "web.dev",
@@ -87,7 +108,12 @@ put(
 put(
   "plugin.json",
   // Agent Plugins 1.0.0, not 1.1.0: Codex CLI 0.170 rejects 1.1.0 manifests, and 1.0.0 has no displayName.
-  json({ $schema: "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json", ...(({ displayName, ...rest }) => rest)(META) }),
+  json({
+    $schema: "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    ...(({ displayName, ...rest }) => rest)(META),
+    // Read by Codex and the OpenAI plugin portal (developers.openai.com/plugins/deploy/submission).
+    extensions: { "com.openai": { interface: OPENAI_INTERFACE } },
+  }),
 );
 
 // Codex marketplace
