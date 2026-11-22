@@ -21,6 +21,28 @@
     "wcag"
   ],
   "hooks": "./.claude-plugin/hooks.json",
+  "network": {
+    "hosts": [
+      "api.figma.com",
+      "developer.apple.com",
+      "developer.android.com",
+      "m3.material.io",
+      "developers.meta.com",
+      "learn.microsoft.com",
+      "fluent2.microsoft.design",
+      "www.w3.org",
+      "developer.mozilla.org",
+      "web.dev",
+      "docs.flutter.dev",
+      "reactnative.dev",
+      "www.nngroup.com",
+      "baymard.com",
+      "design-system.service.gov.uk",
+      "registry.npmjs.org",
+      "cdn.playwright.dev",
+      "playwright.download.prss.microsoft.com"
+    ]
+  },
   "userConfig": {
     "library_path": {
       "type": "directory",

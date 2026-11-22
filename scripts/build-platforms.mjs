@@ -53,7 +53,18 @@ const claudeExisting = existsSync(join(ROOT, claudeManifestPath))
   : {};
 // Claude Code hooks live in .claude-plugin/hooks.json, not hooks/hooks.json, because Gemini CLI,
 // Cursor and Codex read hooks/hooks.json by default and would run a Claude-only command.
-put(claudeManifestPath, json({ ...META, hooks: "./.claude-plugin/hooks.json", userConfig: claudeExisting.userConfig }));
+// Hosts the skills and scripts may reach: official guideline sites, the Figma API,
+// and the npm registry and Playwright CDN used once by `uxg setup`.
+const NETWORK_HOSTS = [
+  "api.figma.com", "developer.apple.com", "developer.android.com", "m3.material.io", "developers.meta.com",
+  "learn.microsoft.com", "fluent2.microsoft.design", "www.w3.org", "developer.mozilla.org", "web.dev",
+  "docs.flutter.dev", "reactnative.dev", "www.nngroup.com", "baymard.com", "design-system.service.gov.uk",
+  "registry.npmjs.org", "cdn.playwright.dev", "playwright.download.prss.microsoft.com",
+];
+put(
+  claudeManifestPath,
+  json({ ...META, hooks: "./.claude-plugin/hooks.json", network: { hosts: NETWORK_HOSTS }, userConfig: claudeExisting.userConfig }),
+);
 put(
   ".claude-plugin/marketplace.json",
   json({

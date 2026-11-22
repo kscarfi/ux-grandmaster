@@ -132,3 +132,39 @@ With the strongest model, the plugin's measurable effect is on process (framing,
 | `trigger-silence-backend`, `quick-fix-button-label`, `framing-gate` | Opus | `--ablation none` | 1.00 each |
 
 The stronger note fixed the framing gap on Haiku without making UX Grandmaster fire on backend, coding or one-line copy tasks.
+
+## 2026-11-22: end-to-end run after the routing, tools, ops and quality-gate skills
+
+- **Plugin state:** commit `6cdcf03` plus the gitleaks fix. 40 skills.
+- **Runs:** one per arm. Opus: new cases with and without the plugin, older cases with the plugin only (regression check). Haiku: every case with and without. Judge: Claude Sonnet 5.5.
+
+| Case | Opus with | Opus without | Haiku with | Haiku without |
+|---|---|---|---|---|
+| `routing-interview-notes` | 1.00 | 0.75 | 0.75 | 0.75 |
+| `designops-embedded-team` | 0.50 | 0.50 | 0.50 | 0.50 |
+| `collab-pm-cuts-states` | 1.00 | 1.00 | 1.00 | 1.00 |
+| `artifact-landing-quality` | 1.00 | 0.80 | 0.80 | 0.80 |
+| `figma-link-review` | error | n/a | error | n/a |
+| `framing-gate` | 1.00 | | 1.00 | 0.50 |
+| `framing-gate-onboarding` | 1.00 | | 1.00 | 1.00 |
+| `framing-gate-dashboard` | 1.00 | | 1.00 | 0.50 |
+| `states-transaction-list` | 1.00 | | 0.20 | 0.40 |
+| `critique-seeded-transfer` | 0.92 | | 0.83 | 0.83 |
+| `a11y-audit-transfer` | 0.86 | | 1.00 | 1.00 |
+| `funnel-payment-drop` | 1.00 | | 1.00 | 1.00 |
+| `diverge-savings-directions` | 1.00 | | 1.00 | 0.67 |
+| `measure-payment-redesign` | 1.00 | | 1.00 | 0.67 |
+| `quick-fix-button-label` | 1.00 | | 1.00 | 1.00 |
+| `leeward-confirm-screen` | 1.00 | | 1.00 | 1.00 |
+| `trigger-silence-coding` | 1.00 | | 1.00 | 1.00 |
+| `trigger-silence-backend` | 1.00 | | 1.00 | 1.00 |
+| `dev-review-vibe-app` | 1.00 | | 1.00 | 0.86 |
+| `dev-review-visionos` | 1.00 | | 1.00 | 1.00 |
+
+Open problems found by this run:
+
+1. `figma-link-review` did not run: the case listed the repository root as a plugin, which the eval tool rejects. Fixed with `scripts/prepare-eval-harness.mjs`; the rerun then stopped on a usage limit before grading.
+2. `designops-embedded-team` fails "focused-plan" in every arm: the grader or the skill needs work.
+3. `states-transaction-list` on Haiku scored lower with the plugin (0.20 against 0.40). Not yet investigated.
+4. `artifact-landing-quality`: no arm designs the waitlist form's success and error outcomes.
+5. Opus did not dispatch the critic subagent, and did not run the contrast script in this run.
