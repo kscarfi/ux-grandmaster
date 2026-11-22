@@ -38,6 +38,7 @@ Go through every item. Fix failures, then render again.
 **Layout and states**
 - [ ] Holds at 360 px and at desktop width; nothing overlaps, is cut off or scrolls sideways.
 - [ ] States are designed (`designing-all-states`): loading, empty, error, success at minimum where they can occur.
+- [ ] Every form has designed outcomes: field validation messages, a submitting state, a success message that says what happens next, and an error message with a way to retry. A form that does nothing visible on submit fails this gate.
 - [ ] Clear hierarchy: the most important thing is seen first; one primary action per view.
 
 **Accessibility**

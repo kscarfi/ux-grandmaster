@@ -35,7 +35,19 @@ A common way to organize DesignOps is around how people work together, how work 
 
 ## 3. Pick a few interventions
 
-Choose two or three changes that address the top problems, each with an owner, a start date and how you will know it worked. Prefer small pilots with one team over org-wide rollouts. Examples:
+Recommend **at most three** changes, the ones that most directly fix the problems the person named. A long list of good practices is the most common failure here: it reads as thorough and gets nothing done. Prefer small pilots with one team over org-wide rollouts.
+
+Use this format for the answer:
+
+> **What I think is going on:** one or two sentences, with the assumptions you made and how to check them.
+>
+> **Change 1: [name].** Fixes: [which stated problem]. Owner: [role]. First step this week: [action]. You will know it works when: [signal].
+>
+> **Change 2 …** (same fields)
+>
+> **Later, if these work:** one line listing other ideas, no detail.
+
+Examples of changes that fit:
 
 - A weekly critique with a fixed format (`critiquing-designs`) instead of ad hoc feedback.
 - A one-page intake form and a visible design backlog shared with product.

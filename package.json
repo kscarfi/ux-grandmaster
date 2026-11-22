@@ -1,6 +1,6 @@
 {
   "name": "ux-grandmaster",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "A design methodology plugin for AI agents: frame, research, design, critique, verify.",
   "license": "MIT",

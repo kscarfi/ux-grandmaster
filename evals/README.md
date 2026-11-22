@@ -21,6 +21,11 @@ The suite uses the `claude plugin eval` format from Claude Code: one folder per 
 | `dev-review-vibe-app` | A solo developer asks for a UX check of an AI-built React app with seeded problems. Scored on located findings (file and line) and priorities. |
 | `dev-review-visionos` | A visionOS SwiftUI view. Scored on applying Apple's visionOS guidance (60 pt hit regions, Dynamic Type, labels, look-and-pinch) rather than generic advice. |
 | `trigger-silence-backend` | A database migration. UX Grandmaster must not fire, even though developers are now a target audience. |
+| `routing-interview-notes` | Interview notes attached to an open question: routes to synthesis, counts evidence by participant, invents nothing. |
+| `designops-embedded-team` | A design manager's DesignOps question: diagnosis, then at most a few owned, measurable changes. |
+| `collab-pm-cuts-states` | A PM wants to cut error states: scope options and evidence, not an ultimatum. |
+| `artifact-landing-quality` | A generated landing page must pass the quality gate: real copy, labels, focus styles, form outcomes, no hype. |
+| `figma-link-review` | A Figma link only: read through a mocked Figma MCP server, review, judge handoff readiness. Run `node scripts/prepare-eval-harness.mjs` first. With-plugin arm only, because removing the plugin also removes the mocked Figma tools. |
 | `measure-payment-redesign` | A measurement plan: primary and guardrail metrics, a correct sample size, and experiment hygiene. |
 
 ## Fixtures

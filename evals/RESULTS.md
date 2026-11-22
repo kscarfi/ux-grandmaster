@@ -168,3 +168,18 @@ Open problems found by this run:
 3. `states-transaction-list` on Haiku scored lower with the plugin (0.20 against 0.40). Not yet investigated.
 4. `artifact-landing-quality`: no arm designs the waitlist form's success and error outcomes.
 5. Opus did not dispatch the critic subagent, and did not run the contrast script in this run.
+
+## 2026-11-22: after the fixes from the end-to-end run
+
+Fixes: the bootstrap skill loads every skill in a chain before using it and states the states rule for single screens; advice is limited to three ranked changes in a fixed format; the quality gate and `designing-all-states` require form outcomes; the Figma case runs through `scripts/prepare-eval-harness.mjs`.
+
+| Case | Model | Arms | With | Without | Δ |
+|---|---|---|---|---|---|
+| `states-transaction-list` | Haiku | both | 1.00 | 0.40 | +0.60 |
+| `designops-embedded-team` | Haiku | both | 1.00 | 0.50 | +0.50 |
+| `designops-embedded-team` | Opus | both | 1.00 | 0.50 | +0.50 |
+| `artifact-landing-quality` | Opus | both | 1.00 | 0.80 | +0.20 |
+| `figma-link-review` | Opus | with only | 1.00 | | |
+| `figma-link-review` | Haiku | with only | 1.00 | | |
+
+The Haiku states regression from the previous run (0.20 with the plugin) came from the agent naming `designing-all-states` without loading it; the trace showed no skill call after the router.

@@ -24,6 +24,7 @@ Go through the list for every screen and component. For each one, design it or w
 | **Error** | Loading failed, saving failed, the network dropped. Say what happened in plain words, keep the user's input, offer a retry. Never show a raw error code alone. |
 | **Partial** | Some data loaded, some failed. Show what is there and mark what is missing. |
 | **Success** | The action worked. Confirm what happened and what comes next. |
+| **Form submission** | Every form: validation per field, a submitting state that prevents double submits, success, and failure with retry. |
 | **Disabled and read-only** | Why can't the user act, and how do they unlock it? Prefer explaining over a silently disabled button. |
 | **Long content** | Long names, big numbers, many items, translated text, which often runs much longer than English. Truncate with care and keep the full value reachable. |
 | **Permissions** | The user lacks access, or a system permission (camera, location, notifications) was refused. |
