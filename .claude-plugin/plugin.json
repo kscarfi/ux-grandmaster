@@ -19,5 +19,10 @@
     "design-systems",
     "critique",
     "wcag"
-  ]
+  ],
+  "icon": "./assets/icon.png",
+  "documentationUrl": "https://github.com/kscarfi/ux-grandmaster#readme",
+  "supportUrl": "https://github.com/kscarfi/ux-grandmaster/issues",
+  "privacyPolicyUrl": "https://github.com/kscarfi/ux-grandmaster/blob/main/PRIVACY.md",
+  "termsOfServiceUrl": "https://github.com/kscarfi/ux-grandmaster/blob/main/LICENSE"
 }
